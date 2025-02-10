@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Be My Valentine?</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #ffe6f2;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+        img {
+            width: 70%;
+            max-width: 250px;
+            height: auto;
+            margin-bottom: 30px;
+        }
+        h2 {
+            font-size: 2rem;
+            color: #ff4d6d;
+            margin: 0 20px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            width: 100%;
+            max-width: 600px;
+            position: relative;
+        }
+        button {
+            font-size: 1.5rem;
+            padding: 15px 30px;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: transform 0.2s ease;
+        }
+        #yes {
+            background-color: #28a745;
+        }
+        #no {
+            background-color: #dc3545;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <img id="sticker" src="https://www.rollingstone.com/wp-content/uploads/2024/06/lisa-new-solo-music.jpg?w=1581&h=1054&crop=1" alt="Cute Sticker">
+    <h2 id="question">Will you be my Valentine?</h2>
+    <div class="buttons">
+        <button id="yes" onclick="sayYes()">Yes</button>
+        <button id="no" onmouseover="moveNo()" ontouchstart="moveNo()">No</button>
+    </div>
+
+    <script>
+        function moveNo() {
+            let noButton = document.getElementById("no");
+            let parent = document.querySelector(".buttons");
+            let maxX = parent.offsetWidth - noButton.offsetWidth;
+            let maxY = parent.offsetHeight - noButton.offsetHeight;
+            
+            let x = Math.random() * maxX - maxX / 2;
+            let y = Math.random() * maxY - maxY / 2;
+            
+            noButton.style.transform = `translate(${x}px, ${y}px)`;
+        }
+
+        function sayYes() {
+            document.getElementById("sticker").src = "https://media.giphy.com/media/sRLfDd1R33y1OHGMUB/giphy.gif";
+            document.getElementById("question").innerText = "I love you so much pookii! ❤️";
+            document.querySelector(".buttons").style.display = "none";
+        }
+    </script>
+</body>
+</html>
